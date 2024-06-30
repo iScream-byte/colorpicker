@@ -1,0 +1,240 @@
+<p-tabView>
+  <p-tabPanel header="Font">
+    <p-divider align="left" type="solid">
+      <b>Latin text</b>
+    </p-divider>
+
+    <div class="">
+      <label>Asian text font: </label>
+      <p-dropdown
+        [options]="asianFontList"
+        [(ngModel)]="selectedAsianFont"
+        optionLabel="name"
+        placeholder="Select a Font"
+      /><br />
+
+      <label>Font Style: </label>
+      <p-dropdown
+        [options]="asianFontList"
+        [(ngModel)]="selectedAsianFont"
+        optionLabel="name"
+        placeholder="Select font style"
+      /><br />
+
+      <label>Size: </label>
+      <p-dropdown
+        [options]="size"
+        [(ngModel)]="selectedSize"
+        optionLabel="name"
+        placeholder="Select size"
+      /><br />
+    </div>
+
+    <p-divider align="left" type="solid">
+      <b>All text</b>
+    </p-divider>
+
+    <div class="" style="display: flex; align-items: center">
+      <label>Font color: &nbsp; </label>
+      <div
+        style="
+          border: 1px solid rgb(175, 175, 175);
+          border-radius: 8px;
+          height: 28px;
+          width: 200px;
+        "
+      >
+        <i
+          class="pi pi-caret-down"
+          style="float: right; margin-top: 6px; margin-right: 5px"
+          (click)="openCloseOptions()"
+        ></i>
+      </div>
+    </div>
+    <div
+      *ngIf="showColorOptions"
+      style="
+        border: 1px solid rgb(189, 189, 189);
+        height: 400px;
+        width: 300px;
+        border-radius: 8px;
+        margin-top: 2px;
+        padding-right: 4px;
+        padding-left: 4px;
+      "
+    >
+      <div
+        [(colorPicker)]="color"
+        style="display: flex; margin-left: 15px; margin-top: 10px"
+      >
+        <div
+          [ngStyle]="{
+            'background-color': color,
+            height: '18px',
+            width: '18px',
+            'margin-right': '10px',
+            'border-radius': '5px'
+          }"
+        ></div>
+        <div style="cursor: default">{{ color }}</div>
+      </div>
+      <div
+        style="
+          height: 25px;
+          background-color: rgb(216, 216, 216);
+          margin-top: 8px;
+        "
+      >
+        <p style="margin-left: 10px; font-weight: bold">Theme Colors</p>
+      </div>
+
+      <div class="grid-container" style="margin-top: 5px">
+        <div
+          *ngFor="let item of predefinedColors"
+          class="grid-item"
+          [ngStyle]="{ 'background-color': item }"
+          (click)="setColorFromPredefined(item)"
+        ></div>
+      </div>
+
+      <div
+        style="
+          height: 25px;
+          background-color: rgb(216, 216, 216);
+          margin-top: 8px;
+        "
+      >
+        <p style="margin-left: 10px; font-weight: bold">Standard Colors</p>
+      </div>
+
+      <div class="grid-container" style="margin-top: 5px">
+        <div
+          *ngFor="let item of standardColors"
+          class="grid-item"
+          [ngStyle]="{ 'background-color': item }"
+          (click)="setColorFromPredefined(item)"
+        ></div>
+      </div>
+
+      <div
+        style="
+          height: 25px;
+          background-color: rgb(216, 216, 216);
+          margin-top: 8px;
+        "
+      >
+        <p style="margin-left: 10px; font-weight: bold">Recent Colors</p>
+      </div>
+
+      <div class="grid-container" style="margin-top: 5px">
+        <div
+          *ngFor="let item of recentColors"
+          class="grid-item"
+          [ngStyle]="{ 'background-color': item }"
+          (click)="setColorFromPredefined(item)"
+        ></div>
+      </div>
+
+      <div
+        style="
+          height: 25px;
+          background-color: rgb(255, 255, 255);
+          margin-top: 8px;
+        "
+        (click)="showMoreColors()"
+      >
+        <i
+          class="pi pi-palette"
+          style="float: left; margin-right: 5px; margin-top: 2px"
+        ></i>
+        <p style="margin-left: 10px; cursor: default">More Colors</p>
+      </div>
+    </div>
+  </p-tabPanel>
+</p-tabView>
+
+<p-dialog
+  [draggable]='false'
+  header="More colors"
+  [modal]="true"
+  [(visible)]="moreColorsVisible"
+  [style]="{ width: '35rem'}"
+>
+<div style="display: inline-flex;">
+<div>
+<div class="hexagon-container" style="margin-top: 20px;">
+  <div *ngFor="let color of colors1; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors2; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors3; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors4; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors5; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors6; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors7; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors8; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors9; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors10; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors11; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors12; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+<div class="hexagon-container">
+  <div *ngFor="let color of colors13; let idx = index">
+        <div (click)="setColorFromPredefined(color)" [ngStyle]="{'background-color': color, '--borderBottom': color, '--borderTop': color}" class="hexagon"></div>
+  </div>
+</div>
+</div>
+<div style="margin-left: 20px;">
+<div style="height: 30px; width: 100px; background-color: rgb(255, 255, 255);  text-align: center;"><p>New</p></div>
+<div style="height: 30px; width: 100px; background-color: rgb(5, 122, 93);  text-align: center;"></div>
+<div [style]="{'height': '30px', 'width': '100px', 'background-color': color, 'text-align': 'center'}"></div>
+<div style="height: 30px; width: 100px; background-color: rgb(255, 255, 255);  text-align: center;"><p>Current</p></div>
+</div>
+</div>
+</p-dialog>
+
+

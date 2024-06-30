@@ -1,0 +1,50 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 4px;
+}
+
+.grid-item {    
+    height: 18px;
+    width: 18px;
+    text-align: center;
+    color: white;
+    // font-size: 1em;
+    border-radius: 5px;
+    
+}
+
+
+.hexagon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 50px;
+}
+
+.hexagon {
+    width: 20px;
+    height: 11.5px;
+    position: relative;
+    margin: 0 0px;
+}
+
+.hexagon:before,
+.hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.hexagon:before {
+    bottom: 100%;
+    border-bottom: var(--borderBottom, 5.75px) solid;
+}
+
+.hexagon:after {
+    top: 100%;
+    width: 0;
+    border-top: var(--borderBottom, 5.75px) solid;
+}

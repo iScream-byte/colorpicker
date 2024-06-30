@@ -1,0 +1,18 @@
+<div class="">
+    <p-button (click)="showDialog()" label="format" />
+    <p-dialog header="Edit" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }">
+    
+    <app-pick></app-pick>
+        
+        
+        
+        
+        
+        
+        <div class="">
+            <p-button label="Save" (click)="visible = false" />
+            <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+            
+        </div>
+    </p-dialog>
+</div>
