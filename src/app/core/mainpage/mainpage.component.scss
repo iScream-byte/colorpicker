@@ -1,0 +1,14 @@
+:host ::ng-deep {
+    .p-tabview-nav-link:has(button){
+        pointer-events: none;
+        button {
+            pointer-events: all;
+        }
+        
+        /* Additional styling for a better button look */
+        border: none !important;
+        padding: 0 4px !important;
+        height: 100%;
+        align-items: center;
+    }
+}

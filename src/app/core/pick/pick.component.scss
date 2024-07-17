@@ -29,6 +29,9 @@
     margin: 0 0px;
 }
 
+
+
+
 .hexagon:before,
 .hexagon:after {
     content: "";
@@ -37,6 +40,10 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
 }
+
+
+
+
 
 .hexagon:before {
     bottom: 100%;
@@ -48,3 +55,5 @@
     width: 0;
     border-top: var(--borderBottom, 5.75px) solid;
 }
+
+

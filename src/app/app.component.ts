@@ -11,19 +11,10 @@ import { PickComponent } from './core/pick/pick.component';
   imports: [
     RouterOutlet,
     CommonModule,
-    DialogModule,
-    ButtonModule,
-    PickComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'colorpicker';
 
-  visible: boolean = true;
-
-  showDialog() {
-    this.visible = true;
-  }
 }
